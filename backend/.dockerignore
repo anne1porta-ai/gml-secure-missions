@@ -1,0 +1,5 @@
+# Contexte de build du backend (compose.yaml : build ./backend).
+# Le .dockerignore de la racine ne s'applique pas à ce contexte.
+target
+.env
+.env.*
