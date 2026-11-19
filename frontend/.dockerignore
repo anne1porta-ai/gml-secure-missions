@@ -1,0 +1,7 @@
+# Contexte de build du frontend (compose.yaml : build ./frontend).
+# Le .dockerignore de la racine ne s'applique pas à ce contexte.
+node_modules
+dist
+.env
+.env.*
+!.env.example
