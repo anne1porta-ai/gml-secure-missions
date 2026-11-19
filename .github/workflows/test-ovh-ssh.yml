@@ -1,0 +1,36 @@
+
+name: Test connexion SSH OVH
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  test-ssh:
+    name: Vérification connexion OVH
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Tester la connexion SSH
+        shell: bash
+        env:
+          OVH_HOST: ${{ secrets.OVH_HOST }}
+          OVH_USER: ${{ secrets.OVH_USER }}
+          SSH_KEY: ${{ secrets.OVH_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.OVH_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+
+          ssh -i ~/.ssh/id_ed25519 \
+            -o IdentitiesOnly=yes \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o ConnectTimeout=15 \
+            "$OVH_USER@$OVH_HOST" \
+            "echo 'Connexion SSH OVH OK'; whoami"
