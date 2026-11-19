@@ -1,0 +1,18 @@
+title = "GML-SHIELD secret scanning"
+
+# Keep the maintained built-in Gitleaks rule set. Any allowlist must stay narrow.
+[extend]
+useDefault = true
+
+# Syntaxe [allowlist] (au singulier), lue par toutes les versions 8.x de gitleaks,
+# dont la 8.24 installée par gitleaks-action : la syntaxe [[allowlists]] n'y est pas
+# prise en compte. Chaque expression correspond exactement à une valeur de fixture
+# de test (comparée au secret détecté) : toute autre valeur reste signalée.
+[allowlist]
+description = "Deterministic test-only JWT and AES-256 fixtures"
+regexes = [
+  '''^test-jwt-secret-with-more-than-thirty-two-bytes-2026$''',
+  '''^MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=$''',
+  # Forme décodée de la clé ci-dessus, analysée elle aussi par les versions récentes.
+  '''^0123456789abcdef0123456789abcdef$''',
+]

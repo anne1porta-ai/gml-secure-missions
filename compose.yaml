@@ -1,0 +1,52 @@
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: gmlshield
+      POSTGRES_USER: gml
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env or environment}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gml -d gmlshield"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:postgresql://database:5432/gmlshield
+      DB_USER: gml
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set in .env or environment}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set in .env or environment}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?ENCRYPTION_KEY must be set in .env or environment}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      DEMO_SEED_ENABLED: ${DEMO_SEED_ENABLED:-false}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:8088}
+      DOCUMENT_STORAGE_PATH: /app/storage/documents
+    volumes:
+      - document_storage:/app/storage/documents
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/actuator/health | grep -q UP"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8088:80"
+
+volumes:
+  postgres_data:
+  document_storage:

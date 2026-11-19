@@ -1,0 +1,15 @@
+{
+  "name": "gml-shield-tests-fonctionnels",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:parcours": "playwright test tests/parcours.spec.js",
+    "test:parcours:visible": "playwright test tests/parcours.spec.js --headed",
+    "test:securite": "playwright test tests/securite.spec.js",
+    "test:securite:visible": "playwright test tests/securite.spec.js --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}
