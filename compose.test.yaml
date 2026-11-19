@@ -1,0 +1,6 @@
+# Surcharge locale uniquement pour la démonstration / le diagnostic.
+# Elle expose temporairement le backend sur le poste hôte sans modifier compose.yaml.
+services:
+  backend:
+    ports:
+      - "127.0.0.1:8080:8080"
