@@ -1,0 +1,120 @@
+
+name: Déploiement OVH
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: gml-shield-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Sauvegarde et déploiement OVH    
+    
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+      
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configurer SSH
+        shell: bash
+        env:
+          SSH_KEY: ${{ secrets.OVH_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.OVH_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+
+      - name: Déployer sur OVH
+        shell: bash
+        env:
+          OVH_HOST: ${{ secrets.OVH_HOST }}
+          OVH_USER: ${{ secrets.OVH_USER }}
+          DEPLOY_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          ssh -T -i ~/.ssh/id_ed25519 \
+            -o IdentitiesOnly=yes \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            "$OVH_USER@$OVH_HOST" \
+            "DEPLOY_SHA=$DEPLOY_SHA bash -se" <<'REMOTE'
+
+          set -euo pipefail
+          umask 077
+
+          cd "$HOME/GMLSHIELD"
+
+          # Vérifications préalables
+          test "$(git remote get-url origin)" = \
+            "git@github.com:anne1porta-ai/gml-secure-missions.git"
+          test "$(git branch --show-current)" = "main"
+          test -z "$(git status --porcelain --untracked-files=no)"
+          test -f .env
+
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$DEPLOY_SHA"
+          git merge-base --is-ancestor HEAD "$DEPLOY_SHA"
+
+          # Sauvegardes avant déploiement
+          BACKUP_DIR="$HOME/GMLSHIELD-backups"
+          mkdir -p "$BACKUP_DIR"
+          DATE=$(date -u +%Y%m%dT%H%M%SZ)
+
+          docker compose exec -T database \
+            pg_dump -U gml gmlshield < /dev/null \
+            | gzip > "$BACKUP_DIR/postgres-$DATE.sql.gz"
+
+          gzip -t "$BACKUP_DIR/postgres-$DATE.sql.gz"
+
+          docker compose exec -T backend \
+          tar -czf - -C /app/storage/documents . < /dev/null \
+          > "$BACKUP_DIR/documents-$DATE.tar.gz"
+
+          tar -tzf "$BACKUP_DIR/documents-$DATE.tar.gz" > /dev/null
+
+          echo "SAUVEGARDES OK"
+
+          # Conserver le README local non suivi, s'il existe, avant le premier
+          # deploiement de la version qui fournit ce fichier dans Git.
+          if [ -f README.md ] && ! git ls-files --error-unmatch -- README.md > /dev/null 2>&1; then
+            mv -- README.md "$BACKUP_DIR/README-local-$DATE.md"
+          fi
+
+          # Sauvegarder le document d'architecture local non suivi avant de
+          # recuperer la version de reference depuis Git.
+          if [ -f docs/ARCHITECTURE.md ] && ! git ls-files --error-unmatch -- docs/ARCHITECTURE.md > /dev/null 2>&1; then
+            mv -- docs/ARCHITECTURE.md "$BACKUP_DIR/ARCHITECTURE-local-$DATE.md"
+          fi
+
+          # Mise à jour du code validé
+          git merge --ff-only "$DEPLOY_SHA"
+
+          echo "MISE A JOUR DU CODE OK"
+
+          # Reconstruction et démarrage
+          docker compose up -d --build --wait --wait-timeout 300
+
+          # Vérification de l'application
+          curl -fsS --retry 6 --retry-delay 5 \
+            https://gml-shield-demo.fr/api/auth/csrf \
+            > /dev/null
+
+          docker compose ps
+
+          echo "DEPLOIEMENT OVH REUSSI"
+          REMOTE
