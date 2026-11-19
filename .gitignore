@@ -6,3 +6,8 @@ frontend/dist/
 
 # Local full-validation artifacts
 artifacts/run-all-tests/
+
+# End-to-end test artifacts
+e2e/node_modules/
+e2e/package-lock.json
+e2e/test-results/
