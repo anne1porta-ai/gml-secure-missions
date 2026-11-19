@@ -1,0 +1,29 @@
+/**
+ * Logo GML-SHIELD : un bouclier (sécurité) portant une feuille (GreenMove).
+ * Purement décoratif : le nom de l'application est toujours affiché à côté.
+ * La couleur du bouclier suit la propriété CSS « color » du parent.
+ */
+export default function Logo({ size = 36 }) {
+  return (
+    <svg
+      className="logo"
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M16 2.5 27 6.6v8.2c0 6.9-4.5 12-11 14.7C9.5 26.8 5 21.7 5 14.8V6.6Z"
+        fill="currentColor"
+      />
+      <path d="M11.2 20.6c0-5.6 3.6-9 10-9.4-.3 6-3.8 9.4-10 9.4Z" fill="#ffffff" />
+      <path
+        d="M11.2 20.6 17.4 14.6"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
