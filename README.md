@@ -1,6 +1,6 @@
 # GMLSHILD
 
-**Gestion sécurisée des missions de transport — GreenMove Logistics**
+**Gestion sécurisée des missions de transport — GrinMove Logistics**
 
 GMLSHILD est une application web permettant à une équipe logistique de **créer, attribuer, suivre et clôturer des missions de transport**, avec une séparation des droits par utilisateur, des justificatifs de livraison et une traçabilité des actions sensibles.
 
@@ -378,4 +378,4 @@ GMLSHILD est un projet pédagogique disposant d'une implémentation fonctionnell
 
 ---
 
-**Projet :** GMLSHILD · **Contexte :** GreenMove Logistics
+**Projet :** GMLSHILD · **Contexte :** GrinMove Logistics
