@@ -2,7 +2,7 @@
 
 [← Présentation du projet](../README.md) · [Exigences fonctionnelles](EXIGENCES_FONCTIONNELLES.md) · [Limites connues](TECHNICAL_DEBT_REGISTER.md)
 
-Ce document présente les **contrôles réellement implémentés** dans GML-SHIELD et leur périmètre. Il ne constitue pas un audit d'intrusion ou une certification de sécurité.
+Ce document présente les **contrôles réellement implémentés** dans GMLSHILD et leur périmètre. Il ne constitue pas un audit d'intrusion ou une certification de sécurité.
 
 ## 1. Authentification et sessions
 

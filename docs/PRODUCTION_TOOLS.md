@@ -1,4 +1,4 @@
-# Outils d'exploitation de GML-SHIELD
+# Outils d'exploitation de GMLSHILD
 
 Ces commandes complètent l'exploitation de l'installation OVH existante.
 Elles utilisent le fichier `compose.yaml` et le fichier privé `.env` du projet.

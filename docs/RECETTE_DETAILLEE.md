@@ -1,8 +1,8 @@
-# Tableau de recette détaillée — GML-SHIELD
+# Tableau de recette détaillée — GMLSHILD
 
 [← Accueil du projet](../README.md) · [Fiche technique](REFERENCE_TECHNIQUE.md) · [Recette fonctionnelle](RECETTE_FONCTIONNELLE.md) · [Sécurité](SECURITE.md)
 
-Ce tableau relie les **exigences**, le **code réellement présent**, les **tests automatisés disponibles** et les **vérifications visibles**. Il reprend la répartition **S (sécurité), A (authentification), RG (règles de gestion), F (fonctionnalités)**, avec des références adaptées à cette version de GML-SHIELD.
+Ce tableau relie les **exigences**, le **code réellement présent**, les **tests automatisés disponibles** et les **vérifications visibles**. Il reprend la répartition **S (sécurité), A (authentification), RG (règles de gestion), F (fonctionnalités)**, avec des références adaptées à cette version de GMLSHILD.
 
 La numérotation sert à naviguer dans cette recette ; elle ne constitue pas une déclaration de conformité à un référentiel réglementaire ou un renvoi vérifié aux annexes officielles d'un énoncé. Il faut également distinguer **code implémenté**, **test automatisé identifié** et **contrôle d'exploitation**.
 

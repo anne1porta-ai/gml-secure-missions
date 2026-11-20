@@ -2,7 +2,7 @@
 
 [← Présentation du projet](../README.md) · [Contrat API](API.md) · [Matrice de recette](RECETTE_FONCTIONNELLE.md)
 
-Cette page décrit les **exigences fonctionnelles** de GML-SHIELD : ce que fait l’application, les droits des utilisateurs et les conditions à respecter lors des opérations. Les validations décrites sont appliquées dans l'API Spring Boot : elles ne dépendent pas de la seule visibilité des boutons dans React.
+Cette page décrit les **exigences fonctionnelles** de GMLSHILD : ce que fait l’application, les droits des utilisateurs et les conditions à respecter lors des opérations. Les validations décrites sont appliquées dans l'API Spring Boot : elles ne dépendent pas de la seule visibilité des boutons dans React.
 
 Chaque exigence porte un identifiant (par exemple **MIS-01**). Ses preuves, c’est-à-dire le code et les tests automatisés, sont listées dans la [recette fonctionnelle](RECETTE_FONCTIONNELLE.md) sous le même identifiant.
 
