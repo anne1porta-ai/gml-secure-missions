@@ -4,7 +4,7 @@
 
 **GMLSHILD** est une application de gestion sécurisée des missions de transport de GreenMove Logistics. Elle permet aux Dispatchers de transmettre et de suivre des missions attribuées à des chauffeurs, avec **un code d'accès chiffré**, des preuves de livraison et un journal d'audit.
 
-Elle fournit une alternative structurée aux échanges de données opérationnelles sensibles par messages ou courriels. Le projet est réalisé dans le cadre du **Mastère CTO & Tech Lead — Studi**.
+Elle fournit une alternative structurée aux échanges de données opérationnelles sensibles par messages ou courriels.
 
 **Application déployée :** https://gml-shield-demo.fr  
 **Dépôt :** [gml-secure-missions](https://github.com/anne1porta-ai/gml-secure-missions)

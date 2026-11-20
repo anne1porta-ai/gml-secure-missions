@@ -8,8 +8,6 @@ Le projet associe **React**, **Java / Spring Boot** et **PostgreSQL**. Il est co
 
 **[Installer et tester en local](#installation-et-tests-en-local)** · **[Voir l'application](https://gml-shield-demo.fr)** · **[Comprendre le fonctionnement](docs/EXIGENCES_FONCTIONNELLES.md)** · **[Fiche technique](docs/REFERENCE_TECHNIQUE.md)** · **[Recette par exigence](docs/RECETTE_DETAILLEE.md)**
 
-> Projet réalisé dans le cadre du **Mastère CTO & Tech Lead — Studi**.
-
 ## Par où commencer ?
 
 Ce README peut se lire **sans connaître Java ni React**. Voici trois parcours possibles :
@@ -364,4 +362,4 @@ GMLSHILD est un projet pédagogique disposant d'une implémentation fonctionnell
 
 ---
 
-**Projet :** GMLSHILD · **Contexte :** GreenMove Logistics · **Formation :** Mastère CTO & Tech Lead — Studi
+**Projet :** GMLSHILD · **Contexte :** GreenMove Logistics
