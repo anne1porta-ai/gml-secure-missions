@@ -1,4 +1,4 @@
-# Contrat API GML-SHIELD
+# Contrat API GMLSHILD
 
 > Pour retrouver les parcours de l'interface et leurs vérifications, voir la [matrice de recette fonctionnelle](RECETTE_FONCTIONNELLE.md).
 

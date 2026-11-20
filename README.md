@@ -1,8 +1,8 @@
-# GML-SHIELD
+# GMLSHILD
 
 **Gestion sécurisée des missions de transport — GreenMove Logistics**
 
-GML-SHIELD est une application web permettant à une équipe logistique de **créer, attribuer, suivre et clôturer des missions de transport**, avec une séparation des droits par utilisateur, des justificatifs de livraison et une traçabilité des actions sensibles.
+GMLSHILD est une application web permettant à une équipe logistique de **créer, attribuer, suivre et clôturer des missions de transport**, avec une séparation des droits par utilisateur, des justificatifs de livraison et une traçabilité des actions sensibles.
 
 Le projet associe **React**, **Java / Spring Boot** et **PostgreSQL**. Il est conteneurisé avec Docker, contrôlé par GitHub Actions et déployé sur OVH.
 
@@ -20,7 +20,7 @@ Ce README peut se lire **sans connaître Java ni React**. Voici trois parcours p
 | **Comprendre la technique** | [Architecture et échanges entre les composants](#architecture-et-technologies) |
 | **Installer ou tester le logiciel** | [Installation et tests en local](#installation-et-tests-en-local) |
 
-**L'idée essentielle :** le répartiteur organise une livraison, le chauffeur la réalise, et GML-SHIELD contrôle les droits, protège le code d'accès, exige une preuve et conserve une trace des actions. Les changements de mission sont signalés au chauffeur en temps réel.
+**L'idée essentielle :** le répartiteur organise une livraison, le chauffeur la réalise, et GMLSHILD contrôle les droits, protège le code d'accès, exige une preuve et conserve une trace des actions. Les changements de mission sont signalés au chauffeur en temps réel.
 
 ---
 ## Installation et tests en local
@@ -54,7 +54,7 @@ Le script prépare automatiquement l'environnement local :
 
 Dans le répertoire du projet, sous PowerShell :
 
-**Avant de lancer les tests en local, arrêter l'application locale GML-SHIELD si elle est déjà démarrée, car les tests utilisent les mêmes ports (8080 et 8088).**
+**Avant de lancer les tests en local, arrêter l'application locale GMLSHILD si elle est déjà démarrée, car les tests utilisent les mêmes ports (8080 et 8088).**
 
 ```powershell
 docker compose down
@@ -265,14 +265,14 @@ Les appels à l'API passent par `http://localhost:8088/api/...` dans le navigate
 | `GET /api/missions/{id}/documents/{docId}` | DISPATCHER propriétaire | Télécharge un justificatif |
 | `GET /api/notifications/stream` | DRIVER | Événements SSE ciblés : nouvelle mission, modification, annulation, réaffectation |
 
-**À ne pas confondre avec un ancien prototype :** GML-SHIELD utilise **SSE**, pas WebSocket ; la base est **PostgreSQL 16** et la production est sur **OVH**, pas sur Render/Supabase. La déconnexion révoque le refresh token, pas instantanément un JWT d'accès déjà émis.
+**À ne pas confondre avec un ancien prototype :** GMLSHILD utilise **SSE**, pas WebSocket ; la base est **PostgreSQL 16** et la production est sur **OVH**, pas sur Render/Supabase. La déconnexion révoque le refresh token, pas instantanément un JWT d'accès déjà émis.
 
 Pour l'ensemble des routes, les statuts HTTP et les règles de droits : **[Contrat API](docs/API.md)**.
 
 
 ## Sécurité et traçabilité
 
-GML-SHIELD met en œuvre plusieurs contrôles complémentaires :
+GMLSHILD met en œuvre plusieurs contrôles complémentaires :
 
 | Enjeu | Réponse dans le logiciel |
 | --- | --- |
@@ -360,8 +360,8 @@ gml-secure-missions/
 
 ## Périmètre de la démonstration
 
-GML-SHIELD est un projet pédagogique disposant d'une implémentation fonctionnelle, de tests automatisés et d'un déploiement réel. Les contrôles existants ne doivent pas être présentés comme une certification de cybersécurité, un audit d'intrusion ou une garantie de haute disponibilité.
+GMLSHILD est un projet pédagogique disposant d'une implémentation fonctionnelle, de tests automatisés et d'un déploiement réel. Les contrôles existants ne doivent pas être présentés comme une certification de cybersécurité, un audit d'intrusion ou une garantie de haute disponibilité.
 
 ---
 
-**Projet :** GML-SHIELD · **Contexte :** GreenMove Logistics · **Formation :** Mastère CTO & Tech Lead — Studi
+**Projet :** GMLSHILD · **Contexte :** GreenMove Logistics · **Formation :** Mastère CTO & Tech Lead — Studi

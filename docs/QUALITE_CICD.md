@@ -2,7 +2,7 @@
 
 [← Présentation du projet](../README.md) · [Recette fonctionnelle](RECETTE_FONCTIONNELLE.md) · [Recette détaillée](RECETTE_DETAILLEE.md) · [Exploitation OVH](PRODUCTION_TOOLS.md)
 
-GML-SHIELD utilise **GitHub Actions** pour vérifier le code, les dépendances, la sécurité et les parcours principaux avant qu'une version intégrée sur `main` puisse être déployée sur OVH.
+GMLSHILD utilise **GitHub Actions** pour vérifier le code, les dépendances, la sécurité et les parcours principaux avant qu'une version intégrée sur `main` puisse être déployée sur OVH.
 
 ## 1. Les six contrôles de la CI
 

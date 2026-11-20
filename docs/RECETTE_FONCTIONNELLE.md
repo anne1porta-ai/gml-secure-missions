@@ -1,4 +1,4 @@
-# Recette fonctionnelle — GML-SHIELD
+# Recette fonctionnelle — GMLSHILD
 
 > **Objectif.** Relier chaque règle de l'application au code qui l'implémente, aux tests automatisés et à la vérification visible dans l'interface.
 

@@ -2,7 +2,7 @@
 
 [← Présentation du projet](../README.md) · [Sécurité](SECURITE.md) · [Contrat API](API.md)
 
-GML-SHIELD est une application web **React + Java/Spring Boot + PostgreSQL**. Les composants sont séparés par responsabilité : interface, règles métier, persistance, documents et notifications. Le déploiement actuel utilise **Docker Compose**, sans cluster Kubernetes.
+GMLSHILD est une application web **React + Java/Spring Boot + PostgreSQL**. Les composants sont séparés par responsabilité : interface, règles métier, persistance, documents et notifications. Le déploiement actuel utilise **Docker Compose**, sans cluster Kubernetes.
 
 ## 1. Vue d'ensemble
 

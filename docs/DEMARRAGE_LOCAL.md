@@ -1,6 +1,6 @@
 # Démarrage et tests en local
 
-Ce guide décrit le fonctionnement local de **GML-SHIELD** sous Windows, ainsi que les tests réalisés dans un environnement séparé. Il ne concerne pas le déploiement OVH.
+Ce guide décrit le fonctionnement local de **GMLSHILD** sous Windows, ainsi que les tests réalisés dans un environnement séparé. Il ne concerne pas le déploiement OVH.
 
 ## 1. Prérequis
 
