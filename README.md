@@ -26,7 +26,7 @@ Le projet associe **React**, **Java / Spring Boot** et **PostgreSQL**. Il est co
 
 ## Par où commencer ?
 
-Ce README peut se lire **sans connaître Java ni React**. Voici trois parcours possibles :
+Ce README présente le fonctionnement de l'application, son architecture et les moyens de l'installer et de la tester. Trois parcours de lecture sont proposés selon les informations recherchées :
 
 | Votre objectif | Commencez ici |
 | --- | --- |
