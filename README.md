@@ -16,11 +16,11 @@ Le projet associe **React**, **Java / Spring Boot** et **PostgreSQL**. Il est co
 
 | Rôle | Identifiant | Mot de passe |
 | --- | --- | --- |
-| Administrateur | `admin1@gml.local` | Communiqué séparément |
-| Dispatcher | `dispatcher1@gml.local` | Communiqué séparément |
-| Chauffeur | `driver1@gml.local` | Communiqué séparément |
+| Administrateur | `admin1@gml.local` | Fourni séparément |
+| Dispatcher | `dispatcher1@gml.local` | Fourni séparément |
+| Chauffeur | `driver1@gml.local` | Fourni séparément |
 
-> **Sécurité :** les mots de passe sont transmis séparément et ne sont pas enregistrés dans Git.
+**Accès à la démonstration :** les identifiants sont disponibles dans ce README. Les mots de passe sont remis directement aux personnes autorisées à tester l'application. Ils ne figurent pas dans le dépôt GitHub afin de préserver la confidentialité des accès.
 
 **[Installer et tester en local](#installation-et-tests-en-local)** · **[Voir l'application](https://gml-shield-demo.fr)** · **[Comprendre le fonctionnement](docs/EXIGENCES_FONCTIONNELLES.md)** · **[Fiche technique](docs/REFERENCE_TECHNIQUE.md)** · **[Recette par exigence](docs/RECETTE_DETAILLEE.md)**
 
